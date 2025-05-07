@@ -16,14 +16,14 @@ services:
       - proxy_net
     restart: unless-stopped
 
-certbot:
-  image: certbot/certbot
-  container_name: certbot
-  volumes:
-    - ./certbot/www:/var/www/certbot
-    - ./certbot/conf:/etc/letsencrypt
-  networks:
-    - proxy_net
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    networks:
+      - proxy_net
 
 networks:
   proxy_net:
