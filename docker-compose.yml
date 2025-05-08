@@ -12,7 +12,7 @@ services:
       - ./certbot/www:/var/www/certbot
       - ./certbot/conf:/etc/letsencrypt
       - ./logs:/var/log/nginx
-      - shared-public:/var/www/html/public     #  accede a los assets generados por app
+      - shared-public:/var/www/html/public    # ✅ accede al volumen compartido
     networks:
       - proxy_net
     restart: unless-stopped
@@ -31,4 +31,6 @@ networks:
     external: true
 
 volumes:
-  shared-public:         #  volumen compartido declarado aquí también
+  shared-public:
+    external: true
+    name: shared-public   # ✅ igual que en Laravel
