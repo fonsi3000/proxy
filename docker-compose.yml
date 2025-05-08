@@ -12,7 +12,7 @@ services:
       - ./certbot/www:/var/www/certbot
       - ./certbot/conf:/etc/letsencrypt
       - ./logs:/var/log/nginx
-      - .:/var/www/html                  # << ✅ ESTO ES LO NUEVO
+      - shared-public:/var/www/html/public     #  accede a los assets generados por app
     networks:
       - proxy_net
     restart: unless-stopped
@@ -29,3 +29,6 @@ services:
 networks:
   proxy_net:
     external: true
+
+volumes:
+  shared-public:         #  volumen compartido declarado aquí también
